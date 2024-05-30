@@ -40,13 +40,14 @@ function visualize(audioBuffer, audioContext) {
 
   function draw() {
     requestAnimationFrame(draw)
-    canvasContext.fillStyle = "#facfde"
+    canvasContext.fillStyle = "rgb(173, 216, 230)"
     canvasContext.fillRect(0, 0, canvas.width, canvas.height)
 
     analyser.getByteFrequencyData(frequencyData)
 
     for (let i = 0; i < frequencyBufferLength; i++) {
-      canvasContext.fillStyle = `rgba(82, 113, 255, ${frequencyData[i] / 255})`;
+      // The frequency data is composed of integers on a scale from 0 to 255
+      canvasContext.fillStyle = "rgb(" + (frequencyData[i]) + ",118, 138)";
       canvasContext.fillRect(
         i * barWidth,
         canvas.height - frequencyData[i],
